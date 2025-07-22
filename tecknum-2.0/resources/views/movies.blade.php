@@ -11,8 +11,20 @@
 
     <nav>
         <ul>
-            <li class="search-bar">
-                <input type="text" id="campoBusca" placeholder="Pesquisar"/>
+            <li>
+                <form action="{{ route('filmes.index') }}" method="GET" style="display:flex; align-items:center;">
+                    <input
+                        type="text"
+                        name="search"
+                        id="campoBusca"
+                        placeholder="Pesquisar"
+                        value="{{ request('search') }}"
+                        style="padding: 4px 8px; font-size: 1rem;"
+                    />
+                    <button type="submit" style="margin-left: 6px; padding: 4px 12px; cursor: pointer;">
+                        Buscar
+                    </button>
+                </form>
             </li>
             <li id="usuarioLogado"></li>
             <li><a href="{{ url('/') }}">Sair</a></li>
@@ -46,10 +58,9 @@
                     <td>{{ $filme->duracao }}</td>
                     <td>{{ $filme->nota }}</td>
                     <td class="btn-option">
-                        <!-- Botões editar/apagar, você pode implementar depois -->
-                        <button class="btn-edit" title="Editar" data-id="{{ $filme->id }}">
+                        <a href="{{ route('filmes.edit', $filme->id) }}" class="btn-edit" title="Editar" style="text-decoration:none; cursor:pointer;">
                             ✏️
-                        </button>
+                        </a>
                         <form action="{{ route('filmes.destroy', $filme->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

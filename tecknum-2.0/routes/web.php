@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmeController;
 
-
-
 Route::get('/', [FilmeController::class, 'index'])->name('filmes.index');
 Route::post('/', [FilmeController::class, 'store'])->name('filmes.store');
 

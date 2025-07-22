@@ -1,5 +1,3 @@
-
-
 @extends('layout')
 
 @section('title', 'Editar Filme')
@@ -33,6 +31,7 @@
     <input type="number" id="nota" name="nota" step="0.1" min="0" max="10" value="{{ old('nota', $filme->nota) }}" required />
 
     <button type="submit">Salvar</button>
-    <a href="{{ route('filmes.index') }}">Cancelar</a>
 </form>
+
+<a href="{{ route('filmes.index') }}">Cancelar</a>
 @endsection
